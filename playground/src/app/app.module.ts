@@ -22,6 +22,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { LandingComponent } from './landing/landing.component';
+import { FlexLayoutModule } from '@angular/flex-layout'
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -33,10 +35,12 @@ import { LandingComponent } from './landing/landing.component';
     LandingComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,    
     AppRoutingModule,
     BrowserAnimationsModule,
+    FlexLayoutModule,
     LayoutModule,
+    CommonModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,

@@ -1,7 +1,26 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<app-nav-bar></app-nav-bar>
-
-<router-outlet></router-outlet>
 
 
-<app-footer></app-footer>
+
+
+
+
+
+<div 
+  gdAreas="header header | side content | footer footer"
+  gdGap="16px"
+  gdRows="auto auto auto">
+  
+  <div gdArea="header">
+    <app-nav-bar></app-nav-bar>
+   </div>
+  <!-- <div gdArea="side">
+    Side
+   </div> -->
+  <div gdArea="content">
+    <router-outlet></router-outlet>
+  </div>
+  <div gdArea="footer">
+    <app-footer></app-footer>
+  </div>
+</div>
