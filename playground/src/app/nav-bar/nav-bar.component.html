@@ -1,5 +1,5 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
+  <!-- <mat-sidenav #drawer class="sidenav" fixedInViewport
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
@@ -9,7 +9,7 @@
       <a mat-list-item href="#">Link 2</a>
       <a mat-list-item href="#">Link 3</a>
     </mat-nav-list>
-  </mat-sidenav>
+  </mat-sidenav> -->
   <mat-sidenav-content>
     <mat-toolbar color="primary">
       <button
@@ -22,6 +22,7 @@
       </button>
       <span>
        <a routerLink="/dashboard">playground</a> </span>
+       <span> <a [routerLink]="['/angular-cheat-sheet']" routerLinkActive="router-link-active" >Angular Cheat Sheet</a></span>
     </mat-toolbar>
     <!-- Add Content Here -->
   </mat-sidenav-content>

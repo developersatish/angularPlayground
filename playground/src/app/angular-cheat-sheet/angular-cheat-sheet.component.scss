@@ -1,0 +1,17 @@
+#cheatsheet {
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    th,
+    td {
+      border: 1px solid black;
+      text-align: left;
+      padding: 10px;
+      width: 50%;
+    }
+
+    th {
+      background-color: #cec3c3;
+    }
+  }
+}

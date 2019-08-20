@@ -24,6 +24,7 @@ import { FooterComponent } from './footer/footer.component';
 import { LandingComponent } from './landing/landing.component';
 import { FlexLayoutModule } from '@angular/flex-layout'
 import { CommonModule } from '@angular/common';
+import { AngularCheatSheetComponent } from './angular-cheat-sheet/angular-cheat-sheet.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CommonModule } from '@angular/common';
     DashboardComponent,
     LoginComponent,
     FooterComponent,
-    LandingComponent
+    LandingComponent,
+    AngularCheatSheetComponent
   ],
   imports: [
     BrowserModule,    
