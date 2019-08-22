@@ -1,0 +1,415 @@
+<div class="main-container"
+     fxLayout="row wrap"
+     [formGroup]="flexForm">
+  <!-- TOP CONTROLS CONTAINER -->
+  <div class="top-controls-container"
+       fxFlex="1 1 100%"
+       fxLayout="row wrap"
+       fxLayoutAlign="space-between start">
+    
+    <!-- FLEX-FLOW CONTROLS CONTAINER -->    
+    <div class="flex-flow-container"
+         fxFlex="1 1 600px"
+         fxLayout="row wrap"
+         fxLayoutAlign="center">
+         
+      <h3 fxFlex="1 1 100%">FLEX-FLOW</h3>
+
+      <h4 fxFlex="1 1 100%">DIRECTION (main-axis)</h4>
+
+      <div class="direction-container"
+            fxFlex="1 1 100%">
+        <button mat-raised-button
+              (click)="direction = 'row'"
+              [color]="direction === 'row' ? 'primary' : null">
+          ROW         
+        </button>
+
+        <button mat-raised-button
+                (click)="direction = 'row-reverse'"
+                [color]="direction === 'row-reverse' ? 'primary' : null">
+          ROW-REVERSE         
+        </button>
+
+        <button mat-raised-button
+                (click)="direction = 'column'"
+                [color]="direction === 'column' ? 'primary' : null">
+          COLUMN         
+        </button>
+        
+        <button mat-raised-button
+                (click)="direction = 'column-reverse'"
+                [color]="direction === 'column-reverse' ? 'primary' : null">
+          COLUMN-REVERSE         
+        </button>
+      </div>
+
+      <h4 fxFlex="1 1 100%">WRAP</h4>
+      
+      <div class="wrap-container"
+           fxFlex="1 1 100%">
+        <button mat-raised-button
+              (click)="wrap = 'wrap'"
+              [color]="wrap === 'wrap' ? 'primary' : null">
+        WRAP         
+        </button>
+        <button mat-raised-button
+                (click)="wrap = 'no-wrap'"
+                [color]="wrap === 'no-wrap' ? 'primary' : null">
+          NO-WRAP         
+        </button>
+      </div>    
+    </div>
+    <!-- END OF FLEX-FLOW CONTROLS CONTAINER -->
+
+    <!-- ITEMS CONTROLS CONTAINER -->
+    <div class="items-controls-container"
+         fxFlex="0 0 auto"
+         fxLayout="row wrap"
+         fxLayoutAlign="space-around">
+
+      <h3 fxFlex="1 1 100%">ITEMS</h3>
+      <div fxFlex="1 1 100%">
+        <div class="items-number-control"
+            fxFlex="1 1 100px"
+            fxLayout="row wrap"
+            fxLayoutAlign="space-around">
+          <h4>NUMBER</h4>
+          <div class="items-number"
+              fxFlex="1 1 100%"
+              fxLayout="row"
+              fxLayoutAlign="center">
+            <h1>{{items}}</h1>
+          </div>
+
+          <button mat-mini-fab
+                  fxFlex="0 0 auto"
+                  (click)="add('items');"
+                  color="accent">
+            <mat-icon>add</mat-icon>
+          </button>
+        
+          <button mat-mini-fab
+                  fxFlex="0 0 auto"
+                  (click)="remove('items');"
+                  color="accent">
+            <mat-icon>remove</mat-icon>
+          </button>
+        </div>
+
+        <div class="items-grow-control"
+            fxFlex="1 1 100px"
+            fxLayout="row wrap"
+            fxLayoutAlign="space-around">
+          <h4>GROW</h4>
+          <div class="items-number"
+              fxFlex="1 1 100%"
+              fxLayout="row"
+              fxLayoutAlign="center">
+            <h1>{{grow}}</h1>
+          </div>
+
+          <button mat-mini-fab
+                  fxFlex="0 0 auto"
+                  (click)="add('grow');"
+                  color="accent">
+            <mat-icon>add</mat-icon>
+          </button>
+        
+          <button mat-mini-fab
+                  fxFlex="0 0 auto"
+                  (click)="remove('grow');"
+                  color="accent">
+            <mat-icon>remove</mat-icon>
+          </button>
+        </div>
+
+        <div class="items-shrink-control"
+            fxFlex="1 1 100px"
+            fxLayout="row wrap"
+            fxLayoutAlign="space-around">
+          <h4>SHRINK</h4>
+          <div class="items-number"
+              fxFlex="1 1 100%"
+              fxLayout="row"
+              fxLayoutAlign="center">
+            <h1>{{shrink}}</h1>
+          </div>
+
+          <button mat-mini-fab
+                  fxFlex="0 0 auto"
+                  (click)="add('shrink');"
+                  color="accent">
+            <mat-icon>add</mat-icon>
+          </button>
+        
+          <button mat-mini-fab
+                  fxFlex="0 0 auto"
+                  (click)="remove('shrink');"
+                  color="accent">
+            <mat-icon>remove</mat-icon>
+          </button>
+        </div>
+
+        <div class="items-basis-control"
+            fxFlex="1 1 100px"
+            fxLayout="row wrap"
+            fxLayoutAlign="space-around">
+          <h4>BASIS</h4>
+          <div class="items-number"
+              fxFlex="1 1 100%"
+              fxLayout="row"
+              fxLayoutAlign="center">
+            <mat-form-field style="width: 60px;">
+              <input matInput
+                    formControlName="basis"
+                    style="text-align: center;">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>  
+    </div>
+    <!-- END OF ITEMS CONTROLS CONTAINER -->
+  </div>
+  <!-- END OF TOP CONTROLS CONTAINER -->
+     
+  <!-- HEADER -->
+  <div class="header-container"
+       fxFlex="1 1 100%">       
+
+      <div class="options-wraper"
+           fxLayout>
+        <div fxFlex="0 0 300px"></div>
+           
+        <div class="options-container"
+              fxFlex="0 0 160px"
+              fxLayout="row wrap"
+              fxLayoutAlign="start"
+              *ngIf="direction === 'row' || direction === 'row-reverse'">          
+          <h3 fxFlex="0 0 100%">PLACE-CONTENT</h3>
+
+          <mat-form-field fxFlex="0 0 auto">
+            <mat-select placeholder="JUSTIFY-CONTENT"
+                        formControlName="justifyContent">
+              <mat-option *ngFor="let option of justifyContentOptions"
+                          [value]="option">
+                {{ option | uppercase }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+          <div fxFlex="0 0 100%"
+               fxLayout
+               fxLayoutAlign="start center"
+               class="axis-title">
+            <mat-icon fxFlex="0 0 auto">arrow_back</mat-icon>
+            <p fxFlex="0 0 auto">MAIN AXIS</p>
+            <mat-icon fxFlex="0 0 auto">arrow_forward</mat-icon>
+          </div>
+        </div>
+
+        <div class="options-container"
+              fxFlex="0 0 550px"
+              fxLayout="row wrap"
+              fxLayoutAlign="start center"
+              *ngIf="direction === 'column' || direction === 'column-reverse'">
+          <div fxFlex="0 0 200px"
+               fxLayout="row wrap"
+               fxLayoutAlign="start center">
+            <h3>PLACE-CONTENT</h3>
+
+            <mat-form-field>
+              <mat-select placeholder="ALIGN-CONTENT"
+                          formControlName="alignContent">
+                <mat-option *ngFor="let option of alignContentOptions"
+                            [value]="option">
+                  {{ option | uppercase }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>            
+          </div>
+
+          <div fxFlex="0 0 200px"
+               fxLayout="row wrap"
+               fxLayoutAlign="start center">
+            <h3>ITEMS</h3>
+
+            <div>
+              <mat-form-field>
+                <mat-select placeholder="ALIGN-ITEMS"
+                            formControlName="alignItems">
+                  <mat-option *ngFor="let option of alignItemsOptions"
+                              [value]="option">
+                    {{ option | uppercase }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          
+          <div fxFlex="0 0 100%"
+               fxLayout
+               fxLayoutAlign="start center"
+               class="axis-title">            
+            <mat-icon>arrow_back</mat-icon>
+            <p>CROSS AXIS</p>
+            <mat-icon>arrow_forward</mat-icon>
+          </div>
+        </div>
+      </div>
+       
+  </div>
+  <!-- END OF HEADER -->
+
+  <!-- SIDEBAR -->
+  <div class="sidebar-container"
+       fxFlex="1 1 300px">
+
+      <div class="options-container"
+            fxLayout="column wrap"
+            fxLayoutAlign="start end"
+            style="height: 300px"
+            *ngIf="direction === 'column' || direction === 'column-reverse'">
+        <h3>PLACE-CONTENT</h3>
+
+        <mat-form-field fxFlex="0 0 auto">
+          <mat-select placeholder="JUSTIFY-CONTENT"
+                      formControlName="justifyContent">
+            <mat-option *ngFor="let option of justifyContentOptions"
+                        [value]="option">
+              {{ option | uppercase }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div fxFlex="0 0 300px"
+             style="writing-mode: tb-rl;"
+             fxLayout
+             fxLayoutAlign="start center"
+             class="axis-title">
+            <mat-icon>arrow_back</mat-icon>
+            <p style="transform: rotate(180deg)"> MAIN AXIS </p>
+            <mat-icon>arrow_forward</mat-icon>
+        </div>    
+      </div>
+
+      <div class="options-container"
+            fxLayout="column wrap"
+            fxLayoutAlign="start end"
+            style="height: 300px"
+            *ngIf="direction === 'row' || direction === 'row-reverse'">
+
+        <h3>PLACE-CONTENT</h3>
+
+        <div fxFlex="0 0 auto">
+          <mat-form-field>
+            <mat-select placeholder="ALIGN-CONTENT"
+                        formControlName="alignContent">
+              <mat-option *ngFor="let option of alignContentOptions"
+                          [value]="option">
+                {{ option | uppercase }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <h3>ITEMS</h3>
+
+        <div fxFlex="0 0 auto">
+          <mat-form-field>
+            <mat-select placeholder="ALIGN-ITEMS"
+                        formControlName="alignItems">
+              <mat-option *ngFor="let option of alignItemsOptions"
+                          [value]="option">
+                {{ option | uppercase }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>      
+
+        <div fxFlex="0 0 300px"
+             style="writing-mode: tb-rl;"
+             fxLayout
+             fxLayoutAlign="start center"
+             class="axis-title">
+            <mat-icon>arrow_back</mat-icon>
+            <p style="transform: rotate(180deg)">CROSS AXIS</p>
+            <mat-icon>arrow_forward</mat-icon>
+        </div>   
+      </div>
+
+  </div>
+  <!-- END OF SIDEBAR -->
+
+  <!-- CONTENT -->
+  <div class="content"
+       fxFlex="1 1 0"
+       [fxLayout]="wrap === 'wrap' ? direction + ' wrap' : direction"       
+       [ngStyle]="{
+         'height.px': direction === 'row' ? '800' : 'auto',
+         'justify-content': flexForm.get('justifyContent').value,
+         'align-content': flexForm.get('alignContent').value,
+         'align-items': flexForm.get('alignItems').value
+        }">
+    <div class="item"
+        [fxFlex]="getFlexOptions(index)"
+        *ngFor="let item of flexForm.get('items').controls; let index = index;"
+        formArrayName="items"
+        fxLayout="column"
+        [fxFlexAlign]="getFlexAlignSelf(index)"
+        [fxFlexOrder]="getFlexOrder(index)">
+        <div class="item-content"
+             style="background-color: #e91e63;"
+             [fxFlex]="index % 2 ? '0 0 100px' : '0 0 160px'"
+             fxLayoutAlign="center center">
+             <h1>{{index + 1}}</h1>
+        </div>
+        <div class="items-input"
+             [formGroupName]="index"
+             fxLayout="row wrap"
+             fxLayoutAlign="space-between center">
+          <mat-form-field fxFlex="0 0 45px">
+            <input matInput
+                   type="number"
+                   formControlName="grow"
+                   min="0"
+                   placeholder="GROW">
+          </mat-form-field>
+          <mat-form-field fxFlex="0 0 45px">
+            <input matInput
+                   type="number"
+                   formControlName="shrink"
+                   min="0"
+                   placeholder="SHRINK">
+          </mat-form-field>
+          <mat-form-field fxFlex="0 0 60px">
+            <input matInput
+                   type="text"
+                   formControlName="basis"
+                   placeholder="BASIS">
+          </mat-form-field>
+          <div fxFlex="0 0 100%"
+               fxLayoutAlign="space-between">
+            <mat-form-field fxFlex="0 0 60px">
+              <input matInput
+                    type="number"
+                    formControlName="order"
+                    placeholder="ORDER">
+            </mat-form-field>
+            <mat-form-field fxFlex="0 0 120px">
+              <mat-select placeholder="ALIGN-SELF"
+                          formControlName="alignSelf">
+                <mat-option *ngFor="let option of alignSelfOptions"
+                            [value]="option">
+                  {{ option | uppercase }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+    </div>    
+  </div>
+  <!-- END OF CONTENT -->
+</div>
+
+

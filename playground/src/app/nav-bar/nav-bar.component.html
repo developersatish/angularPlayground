@@ -12,17 +12,22 @@
   </mat-sidenav> -->
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
+      <!-- <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <span>
-       <a routerLink="/dashboard">playground</a> </span>
-       <span> <a [routerLink]="['/angular-cheat-sheet']" routerLinkActive="router-link-active" >Angular Cheat Sheet</a></span>
+      </button> -->
+      <mat-toolbar-row>
+        <span class="example-spacer"></span>
+        <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+        <mat-menu #menu="matMenu">
+          <a mat-menu-item class="link" *ngFor="let route of routes" [routerLink]="[route.Url]"
+            routerLinkActive="router-link-active">{{route.Name}}</a>
+        </mat-menu>
+
+        <app-menu-bar></app-menu-bar>
+      </mat-toolbar-row>
+
+
     </mat-toolbar>
     <!-- Add Content Here -->
   </mat-sidenav-content>
