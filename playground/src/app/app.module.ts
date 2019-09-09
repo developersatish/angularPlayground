@@ -17,6 +17,7 @@ import { CommonModule } from '@angular/common';
 import { AngularCheatSheetComponent } from './angular-cheat-sheet/angular-cheat-sheet.component';
 import { CommonMaterialModule } from './material.module';
 import { MenuBarComponent } from './nav-bar/menu-bar/menu-bar.component';
+import { ScrollBarComponent } from './scroll-bar/scroll-bar.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MenuBarComponent } from './nav-bar/menu-bar/menu-bar.component';
     FooterComponent,
     LandingComponent,
     AngularCheatSheetComponent,
-    MenuBarComponent
+    MenuBarComponent,
+    ScrollBarComponent
   ],
   imports: [
     BrowserModule,    

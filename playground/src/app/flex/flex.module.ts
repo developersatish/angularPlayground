@@ -7,6 +7,7 @@ import { CommonMaterialModule } from '../material.module';
 import { CardComponent } from './card/card.component';
 import { FullDemoComponent } from './full-demo/full-demo.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LayoutingDemoComponent } from './layouting-demo/layouting-demo.component';
 
 const flexRoute: Routes = [
   {
@@ -23,13 +24,17 @@ const flexRoute: Routes = [
       {
         path: 'full-demo',
         component: FullDemoComponent
+      },
+      {
+        path: 'layout-demo',
+        component: LayoutingDemoComponent
       }
     ]
   }
 ];
 
 @NgModule({
-  declarations: [HomeComponent, CardComponent, FullDemoComponent],
+  declarations: [HomeComponent, CardComponent, FullDemoComponent, LayoutingDemoComponent],
   imports: [
     CommonModule,
     FlexLayoutModule,

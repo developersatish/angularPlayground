@@ -37,6 +37,14 @@ export class NavBarComponent {
     {
       Name:'Flex full demo',
       Url:'/flex/full-demo'
+    },
+    {
+      Name:'Flex layout',
+      Url:'/flex/layout-demo'
+    },
+    {
+      Name:'scroll Bar',
+      Url:'/scroll-bar'
     }
   ];
 

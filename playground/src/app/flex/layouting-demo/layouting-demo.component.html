@@ -1,0 +1,209 @@
+<h1>LAYOUT SAMPLES</h1>
+
+<button mat-raised-button
+        (click)="selectedLayout = 1"
+        [color]="selectedLayout === 1 ? 'primary' : null">
+  LAYOUT 1         
+</button>
+
+<button mat-raised-button
+        (click)="selectedLayout = 2"
+        [color]="selectedLayout === 2 ? 'primary' : null">
+  LAYOUT 2           
+</button>
+
+<button mat-raised-button
+        (click)="selectedLayout = 3"
+        [color]="selectedLayout === 3 ? 'primary' : null">
+  LAYOUT 3          
+</button>
+
+<br>
+
+<!-- LAYOUT 1 -->
+<div class="main-container layout1"
+     *ngIf="selectedLayout === 1">
+  <h2>MULTI-SIZE WITH RESPONSIVE MARGINS</h2>
+
+  <div class="notes">
+    <p>* Resize the editor's browser to see the xs layout.<p>
+    <p>* In this case we are creating "responsive margins" with justify-content 'space-between' that automatically provides the main-axis margins for the items (resize the screen to see it).</p>
+    <p>* We take care of the cross-axis margin with margin-bottom and % units, so they grow as you resize the screen. Note that in order to get it right all the margins need to be equal. Ie: because the first item has a margin-bottom of 4%, the items of the second line need to have a flex-basis: 48% to leave a 4% margin between them. In the third line, they need to to have a flex-basis: 22% to leave a 4% margin between them, and so on...</p>
+    <p>* If we would want to change the flex-direction to column, we would need to change the margin-bottom to margin-right.</p>
+    <p>* We use fxHide.xs to hide the last two items in xs viewports.</p>
+  </div>
+
+  <div class="container-title">
+    <p>CONTAINER</p>
+    <p>fxLayout="row wrap"</p>
+    <p>fxLayoutAlign="space-between"</p>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content"
+       fxLayout="row wrap"
+       fxLayoutAlign="space-between">    
+
+    <div class="item"
+         fxFlex="0 0 100%"
+        [ngStyle]="{'margin-bottom.%': 4}">
+        <div class="item-content">
+        </div>
+
+        <div class="item-title">
+          <p>ITEM</p>
+          <p>fxFlex="0 0 100%"</p>
+          <p>[ngStyle]="{{ '{' }} 'margin-bottom.%': 4 {{ '}' }}"</p>
+        </div>
+    </div>
+
+    <div class="item"
+         fxFlex="0 0 48%"
+         [ngStyle]="{'margin-bottom.%': 4}"
+         *ngFor="let item of [1, 2]">
+        <div class="item-content">
+        </div>
+
+        <div class="item-title">
+          <p>ITEM</p>
+          <p>fxFlex="0 0 48%"</p>
+          <p>[ngStyle]="{{ '{' }} 'margin-bottom.%': 4 {{ '}' }}"</p>
+        </div>
+    </div>
+
+    <div class="item"
+         fxFlex="0 0 22%"
+         fxFlex.xs="0 0 48%"
+         *ngFor="let item of [1, 2]">
+        <div class="item-content">
+        </div>
+
+        <div class="item-title">
+          <p>ITEM</p>
+          <p>fxFlex="0 0 22%"</p>
+          <p>fxFlex.xs="0 0 48%"</p>
+        </div>
+    </div>
+
+    <div class="item"
+         fxFlex="0 0 22%"
+         *ngFor="let item of [1, 2]"
+         fxHide.xs>
+        <div class="item-content">
+        </div>
+
+        <div class="item-title">
+          <p>ITEM</p>
+          <p>fxFlex="0 0 22%"</p>
+          <p>fxHide.xs</p>
+        </div>
+    </div>
+  </div>
+  <!-- END OF CONTENT -->  
+</div>
+
+
+<!-- LAYOUT 2 -->
+<div class="main-container layout2"
+     *ngIf="selectedLayout === 2">
+  <h2>THREE COLUMNS WITH FIXED MARGIN</h2>
+
+  <div class="notes">
+    <p>* Resize the editor's browser to see the xs layout.<p>
+    <p>* In this case we are creating "fixed margins" setting a margin of 6px for every item. Because of this, we need to substract the margin from the item flex-basis (calc(33.3% - 12px)) in order to get it right.</p>
+    <p>* Because the generic styles (style, ngStyle) are preserved and merged into the responsive ones (ngStyle.xs), not replaced by them, we need to define the generic styles as the ones that are not xs: ngStyle.gt-xs</p>
+  </div>
+
+  <div class="container-title">
+    <p>CONTAINER</p>
+    <p>fxLayout="row wrap"</p>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content" 
+       fxLayout="row wrap">   
+    <div class="item"
+        fxFlex="0 0 calc(33.3% - 12px)"
+        [ngStyle.gt-xs]="{'margin.px': 6}"
+        fxFlex.xs="0 0 100%"
+        [ngStyle.xs]="{'margin.px': null, 'margin-bottom.px': 10}"
+        *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 8, 9]">
+        <div class="item-content">
+        </div>
+
+        <div class="item-title">
+          <p>ITEM</p>
+          <p>fxFlex="0 0 calc(33.3% - 12px)"</p>
+          <p>[ngStyle.gt-xs]="{{ '{' }}'margin.px': 6 {{ '}' }}"</p>
+          <p>fxFlex.xs="0 0 100%"</p>
+          <p>[ngStyle.xs]="{{ '{' }} 'margin-bottom.px': 10 {{ '}' }}"</p>
+        </div>
+    </div>
+    
+  </div>
+  <!-- END OF CONTENT -->  
+</div>
+
+
+
+
+<!-- LAYOUT 3 -->
+<div class="main-container layout3"
+     *ngIf="selectedLayout === 3">
+  <h2>PINTEREST</h2>
+
+  <div class="notes">
+    <p>* Resize the editor's browser to see the sm layout.<p>
+    <p>* In this case we are creating a "Pinterest" layout with fxLayoutAlign="column wrap". In order the items to wrap we need to set a max-height (700px in this case), if not the height of the container would grow without limit.</p>
+    <p>* Because we want the items to not grow nor shrink, and to stretch the content, we apply  fxFlex="0 0 0"</p>
+    <p>* In order to get a 5 columns layour, we apply [ngStyle.gt-sm]="{{ '{' }}'width': 'calc(20% - 4px)'{{ '}' }}". </p>
+    <p>* When the viewport is less than 959px (.lt-md), we want every item to fill an entire row, so we switch to fxLayoutAlign.lt-md="row wrap" and fxFlex.lt-md="0 0 100%". We apply overflow: scroll to the container ([ngStyle.lt-md]="{{ '{' }}'overflow': 'scroll'{{ '}' }}") so we keep the items inside the container.</p>
+    <p>.lt-md = max-width(959px)</p>
+    <p>.gt-sm = min-width(960px)</p>
+  </div>
+
+  <div class="container-title">
+    <p>CONTAINER</p>
+    <p>fxLayout="column wrap"</p>
+    <p>[ngStyle]="{{ '{' }} 'max-height.px': 700 {{ '}' }}"</p>
+    <p>fxLayout.lt-md="row wrap"</p>
+    <p>[ngStyle.lt-md]="{{ '{' }} 'overflow': 'scroll' {{ '}' }}"</p>
+  </div> 
+
+  <!-- CONTENT -->
+  <div class="content"
+       fxLayout="column wrap"
+       [ngStyle]="{'max-height.px': 700}"
+       fxLayout.lt-md="row wrap"
+       [ngStyle.lt-md]="{'overflow': 'scroll'}">    
+    
+    <div class="item"
+         fxFlex="0 0 0"
+         [ngStyle.gt-sm]="{'margin.px': 2, 'width': 'calc(20% - 4px)'}"
+         fxFlex.lt-md="0 0 100%"
+         [ngStyle.lt-md]="{'margin-bottom.px': 10}"
+         *ngFor="let content of contents; let index = index;">
+      <div class="item-content">             
+      </div>
+
+      <p>{{ contents[index] }}</p>
+
+      <div class="item-title">
+        <p>ITEM</p>
+        <p>fxFlex="0 0 0"</p>
+        <p>[ngStyle.gt-sm]="{{ '{' }} 'margin.px': 2, 'width':  'calc(20% - 4px)' {{ '}' }}"</p>
+        <p>fxFlex="0 0 100%"</p>
+        <p>[ngStyle.lt-md]="{{ '{' }} 'margin-bottom.px': 10 {{ '}' }}</p>
+      </div>
+    </div>
+
+  </div>
+  <!-- END OF CONTENT -->  
+</div>
+
+
+
+
+
+
+
