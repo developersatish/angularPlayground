@@ -45,6 +45,10 @@ export class NavBarComponent {
     {
       Name:'scroll Bar',
       Url:'/scroll-bar'
+    },
+    {
+      Name:'Entity CURD- ngrx',
+      Url:'/entity'
     }
   ];
 

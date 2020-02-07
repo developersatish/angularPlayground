@@ -1,0 +1,7 @@
+<h1>{{title}}</h1>
+
+<div *ngFor="let entity of (entities$ | async)">
+  <p>
+    Entity Id: {{entity.id}} | Name: {{entity.name}} | Code: {{entity.code}}
+  </p>
+</div>

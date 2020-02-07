@@ -16,6 +16,11 @@ const routes: Routes = [
     path: 'flex',
     loadChildren: () =>
       import('../app/flex/flex.module').then(t => t.FlexModule)
+  },
+  {
+    path: 'entity',
+    loadChildren: () =>
+      import('../app/ngrx-curd/ngrx-curd.module').then(t => t.NgrxCurdModule)
   }
 ];
 

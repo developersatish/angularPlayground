@@ -18,6 +18,7 @@ import { AngularCheatSheetComponent } from './angular-cheat-sheet/angular-cheat-
 import { CommonMaterialModule } from './material.module';
 import { MenuBarComponent } from './nav-bar/menu-bar/menu-bar.component';
 import { ScrollBarComponent } from './scroll-bar/scroll-bar.component';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { ScrollBarComponent } from './scroll-bar/scroll-bar.component';
     LayoutModule,
     CommonModule,   
     ReactiveFormsModule,
-    CommonMaterialModule
+    CommonMaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
